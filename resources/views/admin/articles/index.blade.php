@@ -2,36 +2,36 @@
 
 @section('content')
 
-<div class="container">
-    @component('admin.components.breadcrump')
-        @slot('title')  Список категорий @endslot
-        @slot('parent') Главная          @endslot
-        @slot('active') Категории        @endslot
-    @endcomponent
+    <div class="container">
+        @component('admin.components.breadcrump')
+            @slot('title')  Список новостей @endslot
+            @slot('parent') Главная          @endslot
+            @slot('active') Новости        @endslot
+        @endcomponent
 
-    <hr>
+        <hr>
 
-    <a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right">
-        <i class="fa fa-plus-square-o"></i> Создать категорию
-    </a>
+        <a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right">
+            <i class="fa fa-plus-square-o"></i> Создать новость
+        </a>
 
-    <table class="table table-striped">
-        <thead>
+        <table class="table table-striped">
+            <thead>
             <th>Наименование</th>
             <th>Публикация</th>
             <th class="text-right">Действие</th>
-        </thead>
-        <tbody>
-            @forelse($categories as $category)
+            </thead>
+            <tbody>
+            @forelse($articles as $article)
                 <tr>
-                    <td>{{$category->title}}</td>
-                    <td>{{$category->published}}</td>
+                    <td>{{$article->title}}</td>
+                    <td>{{$article->published}}</td>
                     <td class="text-right">
-                        <form action="{{route('admin.category.destroy', $category)}}" method="post"
+                        <form action="{{route('admin.article.destroy', $article)}}" method="post"
                               onsubmit="if(confirm('Подтвердите удаление')){ return true } else{ return false }">
                             <input type="hidden" name="_method" value="DELETE">
                             {{ csrf_field() }}
-                            <a class="btn btn-secondary" href="{{route('admin.category.edit', $category)}}">
+                            <a class="btn btn-secondary" href="{{route('admin.article.edit', $article)}}">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <button type="submit" class="btn btn-secondary"><i class="fa fa-trash-o"></i></button>
@@ -45,17 +45,17 @@
                     <td colspan="3" class="text-center"><h2>Данные отсутствуют</h2></td>
                 </tr>
             @endforelse
-        </tbody>
-        <tfoot>
+            </tbody>
+            <tfoot>
             <tr>
                 <td colspan="3">
                     <ul class="pagination pull-right">
-                        {{$categories->links()}}
+                        {{$articles->links()}}
                     </ul>
                 </td>
             </tr>
-        </tfoot>
-    </table>
-</div>
+            </tfoot>
+        </table>
+    </div>
 
 @endsection

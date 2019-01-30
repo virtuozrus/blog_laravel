@@ -42,7 +42,7 @@
                         role="button" aria-expanded="false">Блог</a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{route('admin.category.index')}}" class="dropdown-item">Категории</a></li>
-                            <li><a href="#" class="dropdown-item">Материалы</a></li>
+                            <li><a href="{{route('admin.article.index')}}" class="dropdown-item">Материалы</a></li>
                         </ul>
                     </li>
                 </ul>
