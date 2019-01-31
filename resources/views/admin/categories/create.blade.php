@@ -12,7 +12,7 @@
 
             <hr />
 
-            <form action="{{route('admin.category.store')}}" class="form-group row" method="post">
+            <form action="{{route('admin.category.store')}}" class="form-horizontal" method="post">
                 {{ csrf_field() }}
 
                 {{--include form--}}
