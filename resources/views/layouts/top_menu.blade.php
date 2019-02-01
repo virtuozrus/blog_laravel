@@ -6,8 +6,15 @@
                 {{$category->title}} <span class="caret"></span>
             </a>
 
-            <ul class="dropdown-menu">
-                @include('layouts.top_menu', ['categories' => $category->children])
+            <ul class="dropdown-menu" role="menu">
+                <a class="dropdown-item" href="{{url("/blog/category/$category->slug")}}">
+                    {{ $category->title }}
+                </a>
+                @foreach($category->children as $child)
+                    <a class="dropdown-item" href="{{url("/blog/category/$child->slug")}}">
+                        - {{ $child->title }}
+                    </a>
+                @endforeach
             </ul>
     @else
         <li>
