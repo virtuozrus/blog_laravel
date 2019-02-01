@@ -37,9 +37,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    <li>
+                        <a role="button" class="btn btn-outline-dark" href="{{route('admin.index')}}">Панель состояния</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="btn dropdown-toggle btn-outline-dark" data-toggle="dropdown"
-                        role="button" aria-expanded="false">Блог</a>
+                           role="button" aria-expanded="false">Блог</a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{route('admin.category.index')}}" class="dropdown-item">Категории</a></li>
                             <li><a href="{{route('admin.article.index')}}" class="dropdown-item">Материалы</a></li>
