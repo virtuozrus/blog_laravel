@@ -4,34 +4,34 @@
 
     <div class="container">
         @component('admin.components.breadcrump')
-            @slot('title')  Список новостей @endslot
+            @slot('title')  Список пользователей @endslot
             @slot('parent') Главная          @endslot
-            @slot('active') Новости        @endslot
+            @slot('active') Пользователи        @endslot
         @endcomponent
 
         <hr>
 
-        <a href="{{route('admin.article.create')}}" class="btn btn-secondary pull-right">
-            <i class="fa fa-plus-square-o"></i> Создать новость
+        <a href="{{route('admin.user_managment.user.create')}}" class="btn btn-secondary pull-right">
+            <i class="fa fa-plus-square-o"></i> Создать пользователя
         </a>
 
-        <table class="table table-striped">
+        <table class="table table-strИмяiped">
             <thead>
-            <th>Наименование</th>
-            <th>Публикация</th>
+            <th>Имя</th>
+            <th>E-mail</th>
             <th class="text-right">Действие</th>
             </thead>
             <tbody>
-            @forelse($articles as $article)
+            @forelse($users as $user)
                 <tr>
-                    <td>{{$article->title}}</td>
-                    <td>{{$article->published}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
                     <td class="text-right">
-                        <form action="{{route('admin.article.destroy', $article)}}" method="post"
+                        <form action="{{route('admin.user_managment.user.destroy', $user)}}" method="post"
                               onsubmit="if(confirm('Подтвердите удаление')){ return true } else{ return false }">
-                            <input type="hidden" name="_method" value="DELETE">
+                            {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <a class="btn btn-secondary" href="{{route('admin.article.edit', $article)}}">
+                            <a class="btn btn-secondary" href="{{route('admin.user_managment.user.edit', $user)}}">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <button type="submit" class="btn btn-secondary"><i class="fa fa-trash-o"></i></button>
@@ -50,7 +50,7 @@
             <tr>
                 <td colspan="3">
                     <ul class="pagination pull-right">
-                        {{$articles->links()}}
+                        {{$users->links()}}
                     </ul>
                 </td>
             </tr>
